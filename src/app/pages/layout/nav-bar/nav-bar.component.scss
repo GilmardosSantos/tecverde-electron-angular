@@ -1,0 +1,21 @@
+div.nav-wrapper{
+    display: flex;
+    justify-content: end;
+    margin-top: auto;
+    align-items: center;
+    margin-bottom: auto;
+    height: 100%;
+    width: 100%;
+    & ul{
+        list-style: none;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: end;
+        align-items: center;
+        place-self: center;
+        & li{
+            background-color: blue;
+            margin-right:10px
+        }
+    }
+}

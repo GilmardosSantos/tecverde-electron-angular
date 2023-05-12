@@ -1,0 +1,58 @@
+@import "../styles.scss";
+
+*{
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+}
+
+body{
+    background: green;
+}
+
+$navigation-width: 5vw;
+$navigation-height:100%;
+$nav-bar-width: 100%;
+$nav-bar-height: 5vh;
+
+.grid-container{
+    background-color: red;
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-areas:
+    "navigation header"
+    "navigation content";
+    grid-template-rows:  auto 1fr;
+    grid-template-columns: auto 1fr;
+    overflow-x: hidden;
+}
+
+header.app-nav-bar{
+    grid-area: header;
+    width: $nav-bar-width;
+    height: $nav-bar-height;
+    background: pink;
+    z-index: 2;
+}
+
+nav.app-navigation{
+    grid-area: navigation;
+    width: $navigation-width;
+    height: $navigation-height;
+    background-color: blue;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+main.app-content{
+    grid-area: content;
+    z-index:10;
+    position: relative;
+    padding: 20px 20px 20px 20px !important;
+    background-color: purple;
+}
+
+.grid-item{
+    
+}
