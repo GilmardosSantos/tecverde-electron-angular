@@ -9,5 +9,15 @@ import { asapScheduler } from 'rxjs';
 export class NavBarComponent {
     constructor(){
     }
-
+    public NavIcons = [
+      {
+        name:'close'
+      },
+      {
+        name:'fullscreen'
+      },
+      {
+        name:'remove'
+      },
+    ]
 }

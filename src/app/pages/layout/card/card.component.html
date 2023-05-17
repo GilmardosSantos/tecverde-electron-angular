@@ -13,12 +13,9 @@
 <mat-card class="card-wrapper">
     <div class="card-container">
         <mat-card-header class="card-header">
-            <mat-card-title>{{title}}</mat-card-title>
+            <mat-card-title class="card-title">{{title}}</mat-card-title>
         </mat-card-header>
         <hr>
-        <div class="card-content">
-            <ng-container ></ng-container>
-        </div>
+        <ng-content style="background-color: green;"></ng-content>
     </div>
-
 </mat-card>

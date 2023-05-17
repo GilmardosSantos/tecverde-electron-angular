@@ -1,4 +1,4 @@
-div.nav-wrapper{
+div.nav-bar-wrapper{
     display: flex;
     justify-content: end;
     margin-top: auto;
@@ -6,15 +6,15 @@ div.nav-wrapper{
     margin-bottom: auto;
     height: 100%;
     width: 100%;
+    flex-direction: row-reverse;
     & ul{
         list-style: none;
-        display: flex;
-        flex-direction: row-reverse;
         justify-content: end;
-        align-items: center;
-        place-self: center;
         & li{
-            background-color: blue;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-right:10px
         }
     }

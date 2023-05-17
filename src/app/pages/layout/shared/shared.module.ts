@@ -6,6 +6,9 @@ import {MatFormFieldModule } from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {MatSidenavModule} from "@angular/material/sidenav"
 import {MatCardModule} from '@angular/material/card'
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select'
+import {MatButtonModule} from '@angular/material/button'
 @NgModule({
   declarations: [],
   imports: [
@@ -16,7 +19,8 @@ import {MatCardModule} from '@angular/material/card'
     MatFormFieldModule,
     FormsModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule
 
   ],exports:[
     MatIconModule,
@@ -24,8 +28,11 @@ import {MatCardModule} from '@angular/material/card'
     ReactiveFormsModule,
     MatFormFieldModule,
     FormsModule,
+    MatCardModule,
+    MatInputModule,
+    MatSelectModule,
     MatSidenavModule,
-    MatCardModule
+    MatButtonModule
 
   ]
 })

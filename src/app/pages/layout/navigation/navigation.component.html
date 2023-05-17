@@ -1,43 +1,9 @@
-<div class="nav-wrapper">
-    <ul>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
+<div class="nav-wrapper darkscroll">
+    <ul class="nav-ul" *ngFor="let link of NavigationItems">
+        <li class="nav-li">
+            <div class="nav-div">
+                <span class="nav-span"><mat-icon class="nav-icon">{{link.icon}}</mat-icon>{{link.name}}</span>
+            </div>
+        </li>
     </ul>
 </div>
