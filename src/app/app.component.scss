@@ -10,10 +10,15 @@
     max-height: 100vh;
     max-width: 100vw;
     overflow: hidden;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 body{
     background: green;
+    font-family: Helvetica;
+    -webkit-font-smoothing: antialiased;
 }
 
 $navigation-width: 5vw;
@@ -87,37 +92,8 @@ header.nav-bar{
     border-radius:4px
     }
 }
-  
-  
-.form-grid{
-    display: grid;
-    grid-template-columns: auto auto;
-    // background-color: pink;
-    width: 100%;
-    padding: 10px !important;
-    gap: 10px !important;
-}
-
-.form-table{
-    display: grid;
-    // background-color: red;
-    width: 100%;
-    padding: 10px !important;
-    gap: 5px !important;
-}
 
 .card-container{
-    background: royalblue;
-    width: 100%;
     height: 100%;
-    display: flex;
-}
-
-mat-form-field{
-    max-width: 50%;
-    padding: 10px !important;
-}
-
-.form-field{
-    padding: 10px !important;
+    width: 100%;
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 interface select {
   label:string;
@@ -15,5 +15,11 @@ export class SelectComponent {
   @Input() label = ""
   @Input() options = new Array<select>()
   @Input() multiple = 'true'
+  @Input() model: any 
+  @Output() modelChange = new EventEmitter<any>()
 
+  emitChanges(){
+    console.log(this.model)
+    this.modelChange.emit(this.model)
+  }
 }

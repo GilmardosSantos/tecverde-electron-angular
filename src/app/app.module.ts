@@ -11,6 +11,8 @@ import { CardComponent } from './pages/layout/card/card.component';
 import { SharedModule } from './pages/layout/shared/shared.module';
 import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
+import { TableComponent } from './components/table/table.component';
+import { TermoComponent } from './pages/main/termo/termo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { SelectComponent } from './components/select/select.component';
     CardComponent,
     InputComponent,
     SelectComponent,
+    TableComponent,
+    TermoComponent,
   ],
   imports: [
     BrowserModule,

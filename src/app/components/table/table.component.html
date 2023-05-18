@@ -1,0 +1,12 @@
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+          <tr>
+            <th *ngFor="let column of header">{{column}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            <ng-content></ng-content>
+        </tbody>
+      </table>
+</div>

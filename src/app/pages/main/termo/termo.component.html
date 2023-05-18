@@ -1,0 +1,72 @@
+<div class="card-container">
+    <div class="form-wrapper">
+      <section class="form-grid">
+        <form class="card-grid">
+          <ng-input formFieldClass="form-field" icon="user" label="Nome" [model]="this.forms.usuario.nome" (modelChange)="usuarioChange($event,'nome')" [(ngModel)]="this.forms.usuario.nome" name="nome" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Sobrenome" [model]="this.forms.usuario.sobrenome" (modelChange)="usuarioChange($event,'sobrenome')" [(ngModel)]="this.forms.usuario.sobrenome" name="sobrenome" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="N° Documento" [model]="this.forms.usuario.numero_documento" (modelChange)="getDocumento($event)" [(ngModel)]="this.forms.usuario.numero_documento" name="numero_documento" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Cargo" [model]="this.forms.usuario.cargo" (modelChange)="usuarioChange($event,'cargo')" [(ngModel)]="this.forms.usuario.cargo" name="cargo" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Cep" [model]="this.forms.usuario.cep" (modelChange)="getCep($event)" [(ngModel)]="this.forms.usuario.cep" name="cep" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Endereço" [model]="this.forms.usuario.rua" (modelChange)="usuarioChange($event,'rua')" [(ngModel)]="this.forms.usuario.rua" name="rua" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="N° Endereço" [model]="this.forms.usuario.numero" (modelChange)="usuarioChange($event,'numero')" [(ngModel)]="this.forms.usuario.numero" name="numero" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Bairro" [model]="this.forms.usuario.bairro" (modelChange)="usuarioChange($event,'bairro')" [(ngModel)]="this.forms.usuario.bairro" name="bairro" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Cidade" [model]="this.forms.usuario.cidade" (modelChange)="usuarioChange($event,'cidade')" [(ngModel)]="this.forms.usuario.cidade" name="cidade" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Estado" [model]="this.forms.usuario.estado" (modelChange)="usuarioChange($event,'estado')" [(ngModel)]="this.forms.usuario.estado" name="estado" ></ng-input>
+  
+          <ng-select formFieldClass="form-field" label="Tipo de Ação" [options]="select_acao" (modelChange)="selectAcao($event)" [model]="this.forms.usuario.acao"></ng-select>
+  
+          <ng-select formFieldClass="form-field" label="Estado Equipamento" [options]="select_estado_equipamento" multiple="false"(modelChange)="selectEquipamento($event)" [model]="this.forms.usuario.estado_equipamentos"></ng-select>
+  
+        </form>
+      </section>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-table">
+          <ng-input formFieldClass="form-field" icon="user" label="Produto" [model]="this.forms.item_tabela.produto" (modelChange)="tabelaChange($event,'produto')" [(ngModel)]="this.forms.item_tabela.produto" name="produto" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="SN" [model]="this.forms.item_tabela.serial" (modelChange)="tabelaChange($event,'serial')" [(ngModel)]="this.forms.item_tabela.serial" name="serial" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Marca" [model]="this.forms.item_tabela.marca" (modelChange)="tabelaChange($event,'marca')" [(ngModel)]="this.forms.item_tabela.marca" name="marca" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Modelo" [model]="this.forms.item_tabela.modelo" (modelChange)="tabelaChange($event,'modelo')" [(ngModel)]="this.forms.item_tabela.modelo" name="modelo" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Patrimônio" [model]="this.forms.item_tabela.patrimonio" (modelChange)="tabelaChange($event,'patrimonio')" [(ngModel)]="this.forms.item_tabela.patrimonio" name="patrimonio" ></ng-input>
+  
+          <ng-input formFieldClass="form-field" icon="user" label="Observação" [model]="this.forms.item_tabela.observacao" (modelChange)="tabelaChange($event,'observacao')" [(ngModel)]="this.forms.item_tabela.observacao" name="observacao" ></ng-input>
+  
+          <div *ngIf="!this.buttons.tabela" class="form-field buttons">
+            <button (click)="setTabela('devolucao')" mat-raised-button color="primary" style="background-color:mediumseagreen !important; padding: 5px !important;">Devolução</button>
+            <button (click)="setTabela('retirada')" mat-raised-button color="warn" style="padding: 5px !important; margin-left: 5px!important;">Retirada</button>
+            <!-- <button (click)="clearValues()" mat-raised-button color="warn" style="margin-left: 5px !important;">Limpar</button> -->
+          </div>
+  
+  
+          <app-table class="fl-table" [header]="['Ação','Patrimonio/SN','Marca/Modelo','Observacao']" *ngIf="this.forms.usuario.tabela01.length > 0">
+            <tr onclick="(() =>{console.log(`a`)})()" *ngFor="let item of this.forms.usuario.tabela01; let i = index">
+              <td ><button (click)="mudarAcao(i)" mat-raised-button  [ngStyle]="{'background-color' : item.acao == 'retirada' ? 'green' : 'red'}" style="padding:5px !important">{{item.acao == 'retirada' ? 'R' : 'D'}}</button></td>
+              <td>{{item.produto}}/{{item.serial}}({{item.patrimonio}})</td>
+              <td>{{item.marca}}/{{item.modelo}}</td>
+              <td>{{item.observacao}}</td>
+            </tr>
+          </app-table>
+  
+  
+          <div class="form-field buttons">
+            <button (click)="salvar()" mat-raised-button color="primary" style="background-color:mediumseagreen !important; ">Salvar</button>
+            <button (click)="limpar()" mat-raised-button color="warn" style=" margin-left: 5px!important">Limpar</button>
+          </div>
+
+  
+      </div>
+    </div>
+    
+  </div>

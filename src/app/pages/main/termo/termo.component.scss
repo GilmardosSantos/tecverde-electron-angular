@@ -1,0 +1,57 @@
+.card-container{
+    box-sizing: border-box!important;
+    background-color: rgb(0, 139, 42);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    .form-wrapper{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-color: pink;
+        .form-table{
+            box-sizing: border-box!important;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: 15% 15%;
+            background-color: lightslategrey;
+            width: 100%;
+            height: 100%;
+            padding: 10px !important;
+            gap: 5px !important;
+            .fl-table td, .fl-table th {
+                text-align: center !important;
+                padding: 8px !important;
+            }
+        }
+        .card-grid{
+            
+        }          
+        .form-grid{
+            box-sizing: border-box!important;
+            display: grid;
+            grid-template-columns: repeat(1,2fr);
+            grid-template-rows: repeat(auto-fill, minmax(100px, auto));
+            background-color: darkorange;
+            width: 100%;
+            height: 100%;
+            padding: 10px !important;
+            gap: 10px !important;
+        }
+
+        .form-field.buttons{
+            display: flex;
+            background-color: red;
+            gap: 10px;
+            height: 100%;
+            place-items: end;
+            // background-color: yellow;
+        }
+
+    }
+}
+
+
+
+
+

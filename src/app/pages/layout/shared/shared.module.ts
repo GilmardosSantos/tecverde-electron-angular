@@ -9,6 +9,7 @@ import {MatCardModule} from '@angular/material/card'
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select'
 import {MatButtonModule} from '@angular/material/button'
+import {MatTableModule} from '@angular/material/table'
 @NgModule({
   declarations: [],
   imports: [
@@ -20,7 +21,8 @@ import {MatButtonModule} from '@angular/material/button'
     FormsModule,
     MatSidenavModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
 
   ],exports:[
     MatIconModule,
@@ -32,7 +34,8 @@ import {MatButtonModule} from '@angular/material/button'
     MatInputModule,
     MatSelectModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
 
   ]
 })
