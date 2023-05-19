@@ -16,7 +16,7 @@ export class NavigationComponent {
     {
       name:'Termos',
       url:'termos',
-      icon:'home'
+      icon:'assignment_add'
     },
     {
       name:'Assinaturas',
@@ -26,7 +26,7 @@ export class NavigationComponent {
     {
       name:'GLPI',
       url:'glpi',
-      icon:'glpi'
+      icon:'folder_open'
     }
   ]
 }

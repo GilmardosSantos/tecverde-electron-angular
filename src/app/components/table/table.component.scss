@@ -4,6 +4,12 @@
     width: 100%;
 }
 
+table{
+    display:flow-root;
+    height: 85px;
+    overflow: auto;
+}
+
 .fl-table {
     border-radius: 5px;
     font-size: 12px;
@@ -104,5 +110,25 @@
     .fl-table tbody td {
         display: block;
         text-align: center;
+    }
+}
+
+.darkscroll {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #eaeaea #888888;
+    &::-webkit-scrollbar {
+    width: 10px;
+    border-radius:4px
+    }
+        
+    &::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius:4px
+    }
+    
+    &::-webkit-scrollbar-track {
+    background-color: #eaeaea; 
+    border-radius:4px
     }
 }

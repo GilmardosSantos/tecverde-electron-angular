@@ -1,36 +1,39 @@
 export class Usuario {
-    
-    nome:string = ''
-    sobrenome?:string = ''
-    cargo:string = ''
-    numero_documento:string = ''
-    bairro:string = ""
-    cep?: string = ""
-    acao?: any = {}
-    rua:string = ''
-    numero:any = 0
-    cidade:string = ''
-    estado:string = ''
-    retirando:any = false;
-    devolvendo:any = false;
-    estado_equipamentos:string = ''
-    observacao:string = ''
-    // tabela01 = new Array<Tabela01>()
-    tabela01: Array<Tabela01> = [
-    ]
-    data = ''
+    constructor(
+        public nome:string = '',
+        public sobrenome?:string,
+        public cargo:string = '',
+        public numero_documento:string = '',
+        public bairro:string = '',
+        public cep?:string,
+        public acao?: any,
+        public rua:string = '',
+        public numero:any = 0,
+        public cidade:string = '',
+        public estado:string = '',
+        public retirando:boolean = false,
+        public devolvendo:boolean = false,
+        public estado_equipamentos:string = '',
+        public observacao:string = '',
+        public tabela01 = new Array<Tabela01>(),
+        public data:string = ''
+    ){}
 }
 
 export class Tabela01 {
+    constructor(
+        public acao:string = "retirada",
+        public serial?: string,
+        public produto:string = "",
+        public marca:string = "",
+        public modelo?: string,
+        public patrimonio?: string,
+        public data_tabela: string = "",
+
+    ){}
+    public observacao?:string = "";
     [key: string]: string | undefined;
-    acao:string = "retirada";
-    serial?: string = "";
-    produto:string = "";
-    marca:string = "";
-    modelo?: string = "";
-    patrimonio?: string = "";
-    data_tabela: string = "";
-    observacao?:string = "";
+
 }
 
 export interface Cep {
@@ -45,5 +48,21 @@ export interface Cep {
     siafi: string;
     uf: string;
 }
-
+export class Documento{
+    constructor(
+        public nome = '',
+        public cargo = '',
+        public numero_documento = '',
+        public rua = '',
+        public numero = '',
+        public bairro = '',
+        public cidade = '',
+        public estado = '',
+        public retirando = false,
+        public devolvendo = false,
+        public estado_equipamentos = '',
+        public observacao = '',
+        public tabela01 = [{acao:'',produto:'',marca:'',data_tabela:'',observacao:''}]
+    ){}
+}
 export type kUsuario = keyof Usuario;

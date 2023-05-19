@@ -1,6 +1,8 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
-import { Cep, Tabela01, Usuario,kUsuario } from '../../../models/usuario';
+import { Cep, Documento, Tabela01, Usuario,kUsuario } from '../../../models/usuario';
 
+const user = new Usuario('Gilmar','Ribeiro','Assistente de T.I','118.812.869-83',
+'Cachoeira','83701-635',null,'Janaina Assef','490','Araucária','PR',false,false,'','',[],'19/05/2023')
 
 @Component({
   selector: 'app-termo',
@@ -34,8 +36,12 @@ export class TermoComponent{
     }
   ]
   public buttons = {
-    tabela:false
+    tabela:true
   }
+  public editando_tabela = {
+    is:false,
+    index:null || 0,
+  };
   public forms = {
     usuario: new Usuario(),
     item_tabela: new Tabela01()
@@ -54,11 +60,15 @@ export class TermoComponent{
   }
 
   tabelaChange(value:string,key: keyof Tabela01){
+    if(this.editando_tabela.is){
+      this.forms.item_tabela = {...this.forms.item_tabela, [key]:value}
+      this.forms.usuario.tabela01[this.editando_tabela.index] = this.forms.item_tabela
+      return
+    }
     this.forms.item_tabela = {...this.forms.item_tabela, [key]:value}
     const {item_tabela} = this.forms
     delete item_tabela.observacao;
-    if(this.check(item_tabela)) this.buttons.tabela = true;
-    
+    if(this.check(item_tabela)) this.buttons.tabela = false;
     this.forms.usuario.data = this.setData().data
     this.forms.item_tabela.data_tabela = this.setData().data_tabela
   }
@@ -79,7 +89,6 @@ export class TermoComponent{
   selectAcao(value:any){
     value.includes('devolucao') ? this.forms.usuario.devolvendo = true : this.forms.usuario.devolvendo = false
     value.includes('retirada') ? this.forms.usuario.retirando = true : this.forms.usuario.retirando = false
-    console.log(this.forms.usuario)
   }
 
   selectEquipamento(value:any){
@@ -121,19 +130,38 @@ export class TermoComponent{
   setTabela(key:string){
     if(key == 'devolucao')this.forms.item_tabela.acao = 'devolucao'
     if(key == 'retirada')this.forms.item_tabela.acao = 'retirada'
+    if(this.editando_tabela.is){
+      this.forms.usuario.tabela01[this.editando_tabela.index] = this.forms.item_tabela
+      this.buttons.tabela = true
+      this.forms.item_tabela = new Tabela01();
+      return
+    }
+
 
     console.log(this.forms.item_tabela)
     this.forms.usuario = {
       ...this.forms.usuario,
       tabela01: [this.forms.item_tabela, ...this.forms.usuario.tabela01]
     }
+    this.buttons.tabela = true;
     this.forms.item_tabela = new Tabela01()
-    console.log(this.forms.usuario.tabela01)
 
   }
 
   salvar(){
-
+    const u = this.forms.usuario
+    let tabela = [];
+    for(let item of u.tabela01){
+      let i = <any>{}
+      i.acao = item.acao;
+      i.produto = `${item.produto}/${item.serial}(${item.patrimonio})`;
+      i.marca = `${item.marca}/${item.modelo}`;
+      i.data_tabela = item.data_tabela;
+      i.observacao = item.observacao || '';
+      tabela.push(i)
+    }
+    const documento = new Documento(`${u.nome} ${u.sobrenome}`,u.cargo,u.numero_documento,u.rua,u.numero,u.bairro,u.cidade,u.estado,u.retirando,u.devolvendo,u.estado_equipamentos,u.observacao,tabela)
+    console.log(documento)
   }
 
   limpar(){
@@ -141,7 +169,15 @@ export class TermoComponent{
   }
 
   mudarAcao(i:number){
-    this.forms.usuario.tabela01[i].acao = this.forms.usuario.tabela01[i].acao == 'retirada' ? 'devolucao' : 'retirada'
+    this.forms.usuario.tabela01.splice(i,1)
+  }
+
+  editTabela(i:number){
+    this.forms.item_tabela = this.forms.usuario.tabela01[i]
+    this.editando_tabela.index = i;
+    this.editando_tabela.is = true;
+    this.buttons.tabela = false;
+    console.log(i)
   }
 
   clearValues(){

@@ -2,7 +2,9 @@
     <ul class="nav-ul" *ngFor="let link of NavigationItems">
         <li class="nav-li">
             <div class="nav-div">
-                <span class="nav-span"><mat-icon class="nav-icon">{{link.icon}}</mat-icon>{{link.name}}</span>
+                <a [href]="['/'+link.url]">
+                    <span class="nav-span"><mat-icon class="nav-icon">{{link.icon}}</mat-icon>{{link.name}}</span>
+                </a>
             </div>
         </li>
     </ul>
