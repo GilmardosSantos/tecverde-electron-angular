@@ -12,7 +12,7 @@ export class InputComponent{
   @Input() value = ''
   @Input() name = ''
   @Input() icon = '';
-  @Input() formControlName:any
+  @Input() controlName:any
   @Input() form: any
   @Output() modelChange = new EventEmitter<any>()
 

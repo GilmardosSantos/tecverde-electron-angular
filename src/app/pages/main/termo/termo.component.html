@@ -4,17 +4,17 @@
       <form class="grid" [formGroup]="form_usuario">
         <div class="row">
           
-          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Nome" [model]="this.forms.usuario.nome" (modelChange)="usuarioChange($event,'nome')" [(ngModel)]="this.forms.usuario.nome" formControlName="nome"></ng-input>
-
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Nome" [model]="this.forms.usuario.nome" (modelChange)="usuarioChange($event,'nome')" [(ngModel)]="this.forms.usuario.nome" controlName="nome"></ng-input>
+<!-- 
           <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Sobrenome" [model]="this.forms.usuario.sobrenome" (modelChange)="usuarioChange($event,'sobrenome')" [(ngModel)]="this.forms.usuario.sobrenome" formControlName="sobrenome" ></ng-input>
-          
+           -->
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
           <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="N° Documento" [model]="this.forms.usuario.numero_documento" (modelChange)="getDocumento($event)" [(ngModel)]="this.forms.usuario.numero_documento" formControlName="numero_documento" ></ng-input>
   
           <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Cargo" [model]="this.forms.usuario.cargo" (modelChange)="usuarioChange($event,'cargo')" [(ngModel)]="this.forms.usuario.cargo" formControlName="cargo" ></ng-input>
-        </div>
+        </div> -->
         
         <!-- <div class="row">
           <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Cep" [model]="this.forms.usuario.cep" (modelChange)="getCep($event)" [(ngModel)]="this.forms.usuario.cep" formControlName="cep" ></ng-input>

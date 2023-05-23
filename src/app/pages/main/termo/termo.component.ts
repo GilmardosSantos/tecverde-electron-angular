@@ -35,20 +35,7 @@ export class TermoComponent{
     lines:new Array<any>(),
     kits: Kits,
   }
-  public form_usuario = this.fb.group({
-    nome:[''],
-    sobrenome:[''],
-    numero_documento:[''],
-    cargo:[''],
-    cep:[''],
-    rua:[''],
-    numero:[''],
-    bairro:[''],
-    cidade:[''],
-    estado:[''],
-    acao:[''],
-    estado_equipamentos:['']
-  })
+  public form_usuario!: FormGroup;
   
   public form_tabela:FormGroup = this.fb.group({
     produto:new FormControl(''),
@@ -62,9 +49,23 @@ export class TermoComponent{
   constructor(
     private toast: ToastService,
     private glpi: GlpiService,
-    private fb: FormBuilder
+    public fb: FormBuilder
 
     ){
+    this.form_usuario = this.fb.group({
+      nome:[''],
+      sobrenome:[''],
+      numero_documento:[''],
+      cargo:[''],
+      cep:[''],
+      rua:[''],
+      numero:[''],
+      bairro:[''],
+      cidade:[''],
+      estado:[''],
+      acao:[''],
+      estado_equipamentos:['']
+    })
 
     console.clear()
     console.log(this.glpi)
