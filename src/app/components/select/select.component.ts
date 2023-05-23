@@ -16,10 +16,13 @@ export class SelectComponent {
   @Input() options = new Array<select>()
   @Input() multiple = 'true'
   @Input() model: any 
+  @Input() name:any
+  @Input() form:any
   @Output() modelChange = new EventEmitter<any>()
 
   emitChanges(){
     console.log(this.model)
     this.modelChange.emit(this.model)
+    // this.model = this.model.value
   }
 }

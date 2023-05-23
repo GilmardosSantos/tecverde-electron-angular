@@ -1,66 +1,68 @@
 <app-card title="Gerador de Termos">
   <div class="card-container">
     <div class="form-wrapper">
-      <form class="grid">
+      <form class="grid" [formGroup]="form_usuario">
         <div class="row">
           
-          <ng-input formFieldClass="form-field" icon="user" label="Nome" [model]="this.forms.usuario.nome" (modelChange)="usuarioChange($event,'nome')" [(ngModel)]="this.forms.usuario.nome" name="nome" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Nome" [model]="this.forms.usuario.nome" (modelChange)="usuarioChange($event,'nome')" [(ngModel)]="this.forms.usuario.nome" formControlName="nome"></ng-input>
 
-          <ng-input formFieldClass="form-field" icon="user" label="Sobrenome" [model]="this.forms.usuario.sobrenome" (modelChange)="usuarioChange($event,'sobrenome')" [(ngModel)]="this.forms.usuario.sobrenome" name="sobrenome" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Sobrenome" [model]="this.forms.usuario.sobrenome" (modelChange)="usuarioChange($event,'sobrenome')" [(ngModel)]="this.forms.usuario.sobrenome" formControlName="sobrenome" ></ng-input>
           
         </div>
 
         <div class="row">
-          <ng-input formFieldClass="form-field" icon="user" label="N° Documento" [model]="this.forms.usuario.numero_documento" (modelChange)="getDocumento($event)" [(ngModel)]="this.forms.usuario.numero_documento" name="numero_documento" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="N° Documento" [model]="this.forms.usuario.numero_documento" (modelChange)="getDocumento($event)" [(ngModel)]="this.forms.usuario.numero_documento" formControlName="numero_documento" ></ng-input>
   
-          <ng-input formFieldClass="form-field" icon="user" label="Cargo" [model]="this.forms.usuario.cargo" (modelChange)="usuarioChange($event,'cargo')" [(ngModel)]="this.forms.usuario.cargo" name="cargo" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Cargo" [model]="this.forms.usuario.cargo" (modelChange)="usuarioChange($event,'cargo')" [(ngModel)]="this.forms.usuario.cargo" formControlName="cargo" ></ng-input>
         </div>
         
-        <div class="row">
-          <ng-input formFieldClass="form-field" icon="user" label="Cep" [model]="this.forms.usuario.cep" (modelChange)="getCep($event)" [(ngModel)]="this.forms.usuario.cep" name="cep" ></ng-input>
+        <!-- <div class="row">
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Cep" [model]="this.forms.usuario.cep" (modelChange)="getCep($event)" [(ngModel)]="this.forms.usuario.cep" formControlName="cep" ></ng-input>
   
-          <ng-input formFieldClass="form-field" icon="user" label="Endereço" [model]="this.forms.usuario.rua" (modelChange)="usuarioChange($event,'rua')" [(ngModel)]="this.forms.usuario.rua" name="rua" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Endereço" [model]="this.forms.usuario.rua" (modelChange)="usuarioChange($event,'rua')" [(ngModel)]="this.forms.usuario.rua" formControlName="rua" ></ng-input>
         </div>
 
         <div class="row">
-          <ng-input formFieldClass="form-field" icon="user" label="N° Endereço" [model]="this.forms.usuario.numero" (modelChange)="usuarioChange($event,'numero')" [(ngModel)]="this.forms.usuario.numero" name="numero" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="N° Endereço" [model]="this.forms.usuario.numero" (modelChange)="usuarioChange($event,'numero')" [(ngModel)]="this.forms.usuario.numero" formControlName="numero" ></ng-input>
   
-          <ng-input formFieldClass="form-field" icon="user" label="Bairro" [model]="this.forms.usuario.bairro" (modelChange)="usuarioChange($event,'bairro')" [(ngModel)]="this.forms.usuario.bairro" name="bairro" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Bairro" [model]="this.forms.usuario.bairro" (modelChange)="usuarioChange($event,'bairro')" [(ngModel)]="this.forms.usuario.bairro" formControlName="bairro" ></ng-input>
         </div>
 
         <div class="row">
-          <ng-input formFieldClass="form-field" icon="user" label="Cidade" [model]="this.forms.usuario.cidade" (modelChange)="usuarioChange($event,'cidade')" [(ngModel)]="this.forms.usuario.cidade" name="cidade" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Cidade" [model]="this.forms.usuario.cidade" (modelChange)="usuarioChange($event,'cidade')" [(ngModel)]="this.forms.usuario.cidade" formControlName="cidade" ></ng-input>
   
-          <ng-input formFieldClass="form-field" icon="user" label="Estado" [model]="this.forms.usuario.estado" (modelChange)="usuarioChange($event,'estado')" [(ngModel)]="this.forms.usuario.estado" name="estado" ></ng-input>
+          <ng-input [form]="form_usuario" formFieldClass="form-field" icon="user" label="Estado" [model]="this.forms.usuario.estado" (modelChange)="usuarioChange($event,'estado')" [(ngModel)]="this.forms.usuario.estado" formControlName="estado" ></ng-input>
         </div>
 
         <div class="row">
-          <ng-select formFieldClass="form-field" label="Tipo de Ação" [options]="select_acao" (modelChange)="selectAcao($event)" [model]="this.forms.usuario.acao"></ng-select>
+          <ng-select [form]="form_usuario" formFieldClass="form-field" label="Tipo de Ação" [options]="this.selects.acao" (modelChange)="selectAcao($event)" [model]="this.forms.usuario.acao" formControlName="acao"></ng-select>
   
-          <ng-select formFieldClass="form-field" label="Estado Equipamento" [options]="select_estado_equipamento" multiple="false"(modelChange)="selectEquipamento($event)" [model]="this.forms.usuario.estado_equipamentos"></ng-select>
-        </div>
+          <ng-select [form]="form_usuario" formFieldClass="form-field" label="Estado Equipamento" [options]="this.selects.estado_equipamentos" multiple="false"(modelChange)="selectEquipamento($event)" [model]="this.forms.usuario.estado_equipamentos" formControlName="estado_equipamentos"></ng-select>
+        </div> -->
 
       </form>
     </div>
-    <div class="form-wrapper">
-      <form class="grid">
+    <!-- <div class="form-wrapper">
+      <div class="grid">
 
-        <div class="row">
-          <ng-input formFieldClass="form-field" icon="user" label="Produto" [model]="this.forms.item_tabela.produto" (modelChange)="tabelaChange($event,'produto')" [(ngModel)]="this.forms.item_tabela.produto" name="produto" ></ng-input>
-  
-          <ng-input formFieldClass="form-field" icon="user" label="SN" [model]="this.forms.item_tabela.serial" (modelChange)="tabelaChange($event,'serial')" [(ngModel)]="this.forms.item_tabela.serial" name="serial" ></ng-input>
+        <div class="row" [formGroup]="form_tabela">
+
+          <ng-select formFieldClass="form-field" label="Produto" [options]="this.selects.produtos" (modelChange)="selectProduto($event)" [(ngModel)]="this.forms.item_tabela.produto" formControlName="produto" [model]="this.forms.item_tabela.produto" multiple="false"></ng-select>
+
+          <ng-autocomplete formFieldClass="form-field" label="Patrimonio" [options]="this.selects.patrimonios" [model]="this.forms.item_tabela.patrimonio" (modelChange)="selectPatrimonio($event)" [(ngModel)]="this.forms.item_tabela.patrimonio" formControlName="patrimonio"></ng-autocomplete>
         </div>
 
         <div class="row">
-          <ng-input formFieldClass="form-field" icon="user" label="Marca" [model]="this.forms.item_tabela.marca" (modelChange)="tabelaChange($event,'marca')" [(ngModel)]="this.forms.item_tabela.marca" name="marca" ></ng-input>
+          <ng-input formFieldClass="form-field" icon="user" label="Marca" [model]="this.forms.item_tabela.marca" (modelChange)="tabelaChange($event,'marca')" [(ngModel)]="this.forms.item_tabela.marca" formControlName="marca" ></ng-input>
   
-          <ng-input formFieldClass="form-field" icon="user" label="Modelo" [model]="this.forms.item_tabela.modelo" (modelChange)="tabelaChange($event,'modelo')" [(ngModel)]="this.forms.item_tabela.modelo" name="modelo" ></ng-input>          
+          <ng-input formFieldClass="form-field" icon="user" label="Modelo" [model]="this.forms.item_tabela.modelo" (modelChange)="tabelaChange($event,'modelo')" [(ngModel)]="this.forms.item_tabela.modelo" formControlName="modelo" ></ng-input>          
         </div>
 
         <div class="row">
-          <ng-input formFieldClass="form-field" icon="user" label="Patrimônio" [model]="this.forms.item_tabela.patrimonio" (modelChange)="tabelaChange($event,'patrimonio')" [(ngModel)]="this.forms.item_tabela.patrimonio" name="patrimonio" ></ng-input>
 
-          <ng-input formFieldClass="form-field" icon="user" label="Observação" [model]="this.forms.item_tabela.observacao" (modelChange)="tabelaChange($event,'observacao')" [(ngModel)]="this.forms.item_tabela.observacao" name="observacao" ></ng-input>
+          <ng-input formFieldClass="form-field" icon="user" label="SN" [model]="this.forms.item_tabela.serial" (modelChange)="tabelaChange($event,'serial')" [(ngModel)]="this.forms.item_tabela.serial" formControlName="serial" ></ng-input>
+
+          <ng-input formFieldClass="form-field" icon="user" label="Observação" [model]="this.forms.item_tabela.observacao" (modelChange)="tabelaChange($event,'observacao')" [(ngModel)]="this.forms.item_tabela.observacao" formControlName="observacao" ></ng-input>
         </div>
 
         <div class="row">
@@ -87,9 +89,9 @@
           <button (click)="limpar()" mat-raised-button color="warn" style="margin-left: 5px !important">Limpar</button>
         </div>
 
-      </form>
+      </div>
 
-    </div>
+    </div> -->
     
   </div>
 </app-card>

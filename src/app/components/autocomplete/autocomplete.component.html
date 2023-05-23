@@ -1,0 +1,16 @@
+<mat-form-field [class]="formFieldClass">
+    <mat-label>{{label}}</mat-label>
+    <input  type="text"
+            [placeholder]="label"
+            matInput
+            [(ngModel)]="model"
+            (ngModelChange)="emitChanges($event)"
+            [matAutocomplete]="auto"
+            [name]=name
+    >
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option.value">
+            {{option.label}}
+        </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>

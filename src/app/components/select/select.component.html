@@ -1,6 +1,10 @@
 <mat-form-field class="form-field">
     <mat-label>{{label}}</mat-label>
-    <mat-select [multiple]="multiple" [(ngModel)]="model" (ngModelChange)="emitChanges()">
+    <mat-select   [multiple]="multiple" 
+                  [(ngModel)]="model" 
+                  (ngModelChange)="emitChanges()" 
+                  [name]="name" 
+                  >
       <mat-option *ngFor="let option of options" [value]="option.value">{{option.label}}</mat-option>
       <!-- <mat-option value="option1">Option 1</mat-option>
       <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>

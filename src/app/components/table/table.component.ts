@@ -9,16 +9,9 @@ export class TableComponent implements OnInit, OnChanges{
 
 
   ngOnChanges(){
-    console.clear()
-    console.log(this.header)
-    console.log(this.table)
   }
 
   ngOnInit(): void {
-    console.clear()
-      console.log(this.header)
-      
-      console.log(this.table)
 
   }
   @Input() header = new Array<any>()

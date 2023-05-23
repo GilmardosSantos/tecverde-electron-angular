@@ -13,6 +13,11 @@ import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
 import { TableComponent } from './components/table/table.component';
 import { TermoComponent } from './pages/main/termo/termo.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { HotToastModule } from '@ngneat/hot-toast';
+import { ToastService } from './services/toast.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +29,17 @@ import { TermoComponent } from './pages/main/termo/termo.component';
     SelectComponent,
     TableComponent,
     TermoComponent,
+    AutocompleteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    HotToastModule.forRoot()
+
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
