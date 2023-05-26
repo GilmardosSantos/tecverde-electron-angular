@@ -43,8 +43,24 @@ export class GlpiService {
   constructor(
     private toast:ToastService
   ) {
-    const loading = this.toast.loading('Entrando no GLPI', 'glpi')
-    this.auth().then(async() =>{
+    // const loading = this.toast.loading('Entrando no GLPI', 'glpi')
+    // this.auth().then(async() =>{
+    //   let glpi = <any>{} 
+    //   for(let key of Object.keys(this.itens)){
+    //     glpi[key] = await this.getAny(key) 
+    //   }
+    //   this.itens = glpi;
+    //   loading.close();
+    //   this.toast.success('GLPI Carregado','glpisuccess')
+    //   const log = this.itens
+    //   console.log(log)
+    // })
+  }
+
+  async load(){
+    try{
+      const loading = this.toast.loading('Entrando no GLPI', 'glpi')
+      let auth = await this.auth();
       let glpi = <any>{} 
       for(let key of Object.keys(this.itens)){
         glpi[key] = await this.getAny(key) 
@@ -52,9 +68,10 @@ export class GlpiService {
       this.itens = glpi;
       loading.close();
       this.toast.success('GLPI Carregado','glpisuccess')
-      const log = this.itens
-      console.log(log)
-    })
+      return false
+    }catch{
+      return true
+    }
   }
 
 

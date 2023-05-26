@@ -4,6 +4,7 @@
                   [(ngModel)]="model" 
                   (ngModelChange)="emitChanges()" 
                   [name]="name" 
+                  [disabled]="disable"
                   >
       <mat-option *ngFor="let option of options" [value]="option.value">{{option.label}}</mat-option>
       <!-- <mat-option value="option1">Option 1</mat-option>

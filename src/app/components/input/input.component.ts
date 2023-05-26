@@ -14,6 +14,9 @@ export class InputComponent{
   @Input() icon = '';
   @Input() controlName:any
   @Input() form: any
+  @Input() disable = false
+  @Input()
+
   @Output() modelChange = new EventEmitter<any>()
 
 

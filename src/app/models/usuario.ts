@@ -16,7 +16,7 @@ export class Usuario {
         public estado_equipamentos:string = '',
         public observacao:string = '',
         public tabela01 = new Array<Tabela01>(),
-        public data:string = ''
+        public data = setData().data
     ){}
 }
 
@@ -28,7 +28,7 @@ export class Tabela01 {
         public marca:string = "",
         public modelo?: string,
         public patrimonio?: string,
-        public data_tabela: string = "",
+        public data_tabela = setData().data_tabela
 
     ){}
     public observacao?:string = "";
@@ -62,7 +62,35 @@ export class Documento{
         public devolvendo = false,
         public estado_equipamentos = '',
         public observacao = '',
-        public tabela01 = [{acao:'',produto:'',marca:'',data_tabela:'',observacao:''}]
+        public tabela01 = [{acao:'',produto:'',marca:'',data_tabela:'',observacao:''}],
+        public data = setData().data
     ){}
 }
 export type kUsuario = keyof Usuario;
+
+function setData(){
+    const meses = [
+        "janeiro",
+        "fevereiro",
+        "março",
+        "abril",
+        "maio",
+        "junho",
+        "julho",
+        "agosto",
+        "setembro",
+        "outubro",
+        "novembro",
+        "dezembro"
+    ]
+    const data = new Date().toLocaleDateString()
+    console.log(data)
+    const [dia,mes,ano] = [data.substring(0,2), (data.substring(3,5)), data.substring(6)]
+    console.log(dia,mes,ano)
+    const datas = {
+        data:`${dia} de ${meses[Number(mes)- 1]} de ${ano}`,
+        data_tabela: `${dia}/${mes}/${ano}`
+    }
+    console.log(datas)
+    return datas
+  }

@@ -62,7 +62,8 @@ export const select = {
             label:"Retirada"
         }
       ],
-      patrimonios:<any>[]
+      patrimonios:<any>[],
+      users:<any>[]
 }
 
 export const Kits = [

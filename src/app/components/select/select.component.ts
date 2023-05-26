@@ -18,6 +18,7 @@ export class SelectComponent {
   @Input() model: any 
   @Input() name:any
   @Input() form:any
+  @Input() disable = false
   @Output() modelChange = new EventEmitter<any>()
 
   emitChanges(){

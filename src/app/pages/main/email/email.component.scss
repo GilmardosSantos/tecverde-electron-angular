@@ -1,0 +1,93 @@
+.card-container{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    justify-tracks: center;
+    // background-color: red;
+}
+
+.mail-container{
+    width: 50%!important;
+    background-color:rgb(216, 107, 107);
+    height: 100%;
+    display: flex;
+}
+
+.form-wrapper{
+    flex: 1;
+    background-color:blueviolet;
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    .form-row{
+        box-sizing: border-box!important;
+
+        display: flex;// position: relative;
+        flex-direction: row;
+        // flex-basis: 100%;
+        width: 100%;
+        flex-wrap: wrap;
+        border: 1px solid red;
+        background-color: red;
+    }
+    .form-col{
+        box-sizing: border-box!important;
+        display: inline-flex;
+        flex-direction: column;
+        // flex-basis: 100%;
+        width: 100%;
+        background-color: rgb(67, 160, 214);
+        border: 1px dotted yellow;
+        place-content: center;
+    }
+    
+}
+
+.teste{
+    align-items: center;
+    place-content: center;
+}
+
+ 
+@media(max-width:720px){
+    .form-wrapper{
+        flex-direction: column;
+        height: auto!important;
+    }
+    .form-row{
+        display: flex !important;
+        background-color: lightcoral!important;
+        flex-direction: column!important;
+
+    }
+    
+    .form-col{
+        // flex-basis: 100% !important;
+        // background-color:pink
+    }
+}
+
+        
+.green{
+    background-color:rgb(198, 219, 198)!important
+
+}
+
+.yellow{
+    background-color: yellow !important;
+}
+
+.red{
+    background-color: rgb(224, 145, 145) !important;
+}
+
+.pink{
+    background-color: rgb(160, 111, 240) !important;
+}

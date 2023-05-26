@@ -1,13 +1,11 @@
-<mat-form-field [class]="formFieldClass" [formGroup]="form">
+<mat-form-field [class]="formFieldClass">
   <mat-label>{{label}}</mat-label>
   <input  matInput 
-          
           type="text" 
           [(ngModel)]="model" 
           (ngModelChange)="emitChanges()"
           [name]="controlName"
-          [formControlName]="controlName"
-          
+          [disabled]="disable"
           >
   <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
     <mat-icon *ngIf="icon">close</mat-icon>
