@@ -46,7 +46,7 @@
 
         <div class="row">
 
-          <ng-select [disable]="this.buttons.table" formFieldClass="form-field" label="Produto" [options]="this.selects.produtos" (modelChange)="selectProduto($event)" [(ngModel)]="this.forms.item_tabela.produto" name="produto" [model]="this.forms.item_tabela.produto" multiple="false"></ng-select>
+          <ng-autocomplete [disable]="this.buttons.table" formFieldClass="form-field" label="Produto" [options]="this.selects.produtos" (modelChange)="selectProduto($event)" [(ngModel)]="this.forms.item_tabela.produto" name="produto" [model]="this.forms.item_tabela.produto" multiple="false"></ng-autocomplete>
 
           <ng-autocomplete [disable]="this.buttons.table" formFieldClass="form-field" label="Patrimonio" [options]="this.selects.patrimonios" [model]="this.forms.item_tabela.patrimonio" (modelChange)="selectPatrimonio($event)" [(ngModel)]="this.forms.item_tabela.patrimonio" name="patrimonio"></ng-autocomplete>
         </div>
@@ -65,8 +65,8 @@
         </div>
 
         <div class="row">
-            <button [disabled]="!this.buttons.tabela" (click)="setTabela('devolucao')" mat-raised-button color="primary" style="background-color:mediumseagreen !important">Devolução</button>
-            <button [disabled]="!this.buttons.tabela" (click)="setTabela('retirada')" mat-raised-button color="warn" style="margin-left: 5px!important;">Retirada</button>
+            <button  (click)="setTabela('devolucao')" mat-raised-button color="primary" style="background-color:mediumseagreen !important">Devolução</button>
+            <button  (click)="setTabela('retirada')" mat-raised-button color="warn" style="margin-left: 5px!important;">Retirada</button>
         </div>
 
         <div class="row" style="max-width:80%">

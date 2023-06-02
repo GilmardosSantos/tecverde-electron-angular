@@ -1,3 +1,4 @@
+@import '../../../app.component.scss';
 .card-container{
     box-sizing: border-box;
     width: 100%;
@@ -5,25 +6,25 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    justify-items: center;
-    justify-self: center;
-    justify-tracks: center;
-    // background-color: red;
+    flex-wrap: wrap;
 }
 
 .mail-container{
-    width: 50%!important;
-    background-color:rgb(216, 107, 107);
+    width: 100%!important;
+    // background-color:rgb(216, 107, 107);
     height: 100%;
     display: flex;
+
 }
 
 .form-wrapper{
     flex: 1;
-    background-color:blueviolet;
-    display: flex;
+    // background-color:blueviolet;
+    overflow: auto!important;
+
+    // display: flex;
     // flex-wrap: wrap;
-    flex-direction: row;
+    // flex-direction: row;
     width: 100%;
     height: 100%;
     .form-row{
@@ -33,9 +34,9 @@
         flex-direction: row;
         // flex-basis: 100%;
         width: 100%;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
         border: 1px solid red;
-        background-color: red;
+        // background-color: red;
     }
     .form-col{
         box-sizing: border-box!important;
@@ -43,7 +44,7 @@
         flex-direction: column;
         // flex-basis: 100%;
         width: 100%;
-        background-color: rgb(67, 160, 214);
+        // background-color: rgb(67, 160, 214);
         border: 1px dotted yellow;
         place-content: center;
     }
@@ -55,39 +56,109 @@
     place-content: center;
 }
 
+.col{
+    // display: flex;
+    // flex: 1 1;
+    // flex-wrap: wrap;
+    // display: flex;
+    // flex-direction: column;
+    // background-color: green;
+    // width: 100%;
+    
+    // border:1px solid;
+    // border-color: gray;
+}
+
+.row{
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    // background-color: yellow;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
  
 @media(max-width:720px){
     .form-wrapper{
-        flex-direction: column;
+        // flex-direction: column;
         height: auto!important;
+
     }
     .form-row{
         display: flex !important;
-        background-color: lightcoral!important;
-        flex-direction: column!important;
+        // background-color: lightcoral!important;
+        flex-direction: row!important;
 
     }
     
     .form-col{
         // flex-basis: 100% !important;
+
         // background-color:pink
+    }
+
+    // .mail-container{
+    //     width: 100%!important;
+
+    // }
+}
+
+.modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // background-color: red;
+    z-index: 2;
+}
+
+.modal-card{
+    position: relative;
+    z-index:3
+}
+
+.email.card.bgwhite{
+    background-color: white !important;
+    .emailsignature{
+        padding: 10px;
     }
 }
 
         
-.green{
-    background-color:rgb(198, 219, 198)!important
+// .green{
+//     background-color:rgb(198, 219, 198)!important
 
+// }
+
+// .yellow{
+//     background-color: yellow !important;
+// }
+
+// .red{
+//     background-color: rgb(224, 145, 145) !important;
+// }
+
+// .pink{
+//     background-color: rgb(160, 111, 240) !important;
+// }
+.card-wrapper{
+    padding:10px !important;
+    width: 700px;
 }
 
-.yellow{
-    background-color: yellow !important;
+.app-modal{
+    z-index: 20;
+    border-radius: 3px;
+    width: 90%;
+    height: 90%;
+    // background-color: green;
+    position: absolute;
 }
 
-.red{
-    background-color: rgb(224, 145, 145) !important;
-}
-
-.pink{
-    background-color: rgb(160, 111, 240) !important;
+.white-paper{
+    background-color: white;
+    width: 100%;
+    height: 300px;
 }

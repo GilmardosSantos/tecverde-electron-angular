@@ -16,6 +16,7 @@ import { TermoComponent } from './pages/main/termo/termo.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { ToastService } from './services/toast.service';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ToastService } from './services/toast.service';
     TableComponent,
     TermoComponent,
     AutocompleteComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

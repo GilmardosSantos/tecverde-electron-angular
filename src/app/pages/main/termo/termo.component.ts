@@ -149,26 +149,46 @@ export class TermoComponent{
     if(this.loaded.glpi){
       const res = this.glpi.itens.User.find(((user:any) => user.name.toLowerCase() == value.toLowerCase())) as any
       if(res){
-        console.log(res)
+        console.log('GLPI RES =>', res)
         this.forms.usuario.nome = res.firstname;
         this.forms.usuario.sobrenome = res.realname
         this.forms.usuario.cargo = (await this.glpi.getAny('UserTitle',res.usertitles_id)).name
         let i = 0;
         let name_arr:String[] = `${res.firstname} ${res.realname}`.split(' ');
-        const excel = this.enderecos.find((item:any) =>{
-          for(let name of name_arr){
-            if(item.NOME.toLowerCase().includes(name.toLocaleLowerCase())){
-              i++
-            }
-            if(i == 2){
-              return true;
-            }
+        let excel = <any>{}
+        let filtered = name_arr.slice(0, name_arr.length - 1).join(' ')
+        console.log(filtered)
+        for(let xlsx of this.enderecos){
+          console.log(xlsx)
+          if(xlsx.NOME.toUpperCase().includes(filtered.toUpperCase())){
+            excel = xlsx
+            // console.log(xlsx)
           }
-          return null;
+        }
+        this.enderecos.find((item:any) =>{
+
         })
+        // const excel = this.enderecos.find((item:any) =>{
+        //   for(let name of name_arr.filter(n => n.toLowerCase() != 'de')){
+        //     console.log(name)
+        //     if(item.NOME.toLowerCase().includes(name.toLowerCase())){
+        //       console.log('find', name)
+        //       i++
+        //     }
+        //     if(i == 2){
+        //       return true;
+        //     }
+        //   }
+        //   i = 0 ;
+        //   return null;
+        // })
+        console.log('EXCEL Search:',name_arr)
+        console.log(excel)
         if(excel){
+          this.toast.success(excel.NOME,excel.CPF)
           let cpf = String(excel.CPF).replace(/[^\w\s]/gi, '')
-          cpf = cpf.length < 11 ? '0'+cpf : cpf
+          cpf = cpf.length < 11 ? '0'+cpf : cpf;
+          cpf = cpf.length < 10 ? '00'+cpf : cpf;
           this.getDocumento(cpf)
           this.getCep(excel.CEP.replace(/[^\w\s]/gi, ''))
           this.forms.usuario.numero = excel['Nº']
@@ -203,7 +223,7 @@ export class TermoComponent{
   }
 
   selectPatrimonio(value:any){
-    console.log(value)
+    this.forms.item_tabela.patrimonio = value;
     let res = <any>{}
     for(let key of Object.values(this.itens)){
       console.log(key)
@@ -379,7 +399,7 @@ export class TermoComponent{
   }
 
   async getCep(value:string){
-    console.clear()
+    // console.clear()
     console.log(value)
     if(value.length >= 8){
       const res = await fetch(`http://viacep.com.br/ws/${value}/json`)

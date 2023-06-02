@@ -11,11 +11,11 @@
 </div> -->
 
 <mat-card class="card-wrapper">
-    <div class="card-container">
-        <mat-card-header class="card-header">
-            <mat-card-title class="card-title">{{title}}</mat-card-title>
+    <div class="card-container" [style]="styles">
+        <mat-card-header *ngIf="title" class="card-header">
+            <mat-card-title *ngIf="title" class="card-title">{{title}}</mat-card-title>
         </mat-card-header>
-        <hr>
+        <hr *ngIf="title">
         <ng-content style="background-color: green;"></ng-content>
     </div>
 </mat-card>

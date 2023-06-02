@@ -1,26 +1,349 @@
-<app-card title="Gerador de Assinaturas">
-    <div class="card-container"
-    style=" background-color:green;
-    ">
+<app-card title="Gerador de Assinaturas" style="position:relative">
+    <!-- <div class="modal"> -->
+        <!-- <app-card title="Assinatura do E-Mail"> -->
+            
+            <app-modal *ngIf="!show_email" class="app-modal">
+                <app-card styles="place-content: baseline!important">
+                    <div class="card-wrapper">
+                        <div class="white-paper">
+                            <main class="emailsignature" style="width:100%; padding: 10px!important;">
+                                <table style="vertical-align: -webkit-baseline-middle!important;
+                                font-size: small !important;
+                                font-family: Arial, Helvetica, sans-serif!important;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle!important;
+                                font-size: small !important;
+                                font-family: Arial, Helvetica, sans-serif!important;">
+                                                    <tbody style="border-radius:50%">
+                                                        <tr style="border-radius:50%">
+                                                            <td id="display-image-user" style="width: 150px;
+                                                            vertical-align: middle;
+                                                            border-radius: 50%;
+                                                            justify-content: center;
+                                                            "[ngStyle]="{'display': this.usuario.url_imagem ? 'block' : 'none'}">
+                                                                <span *ngIf="this.usuario.url_imagem">
+                                                                    <img [src]="this.usuario.url_imagem.length > 10 ? this.usuario.url_imagem : '' " alt="user image" role="presentation" id="mail_image" width="150px">
+                                                                </span>
+                                                            </td>
+                                                            <td style="vertical-align:middle">
+                                                                <h2 style="margin:0px !important;
+                                                                font-size: 16px !important;
+                                                                color: rgb(0,0,0) !important;
+                                                                font-weight: 600 !important;">
+                                                                    <span id="first_name">{{this.usuario.nome}}</span>
+                                                                    <span>&nbsp;</span>
+                                                                    <span id="last_name">{{this.usuario.sobrenome}}</span>
+                                                                </h2>
+                                                                <p style="margin:0px !important;
+                                                                font-size: 12px !important;
+                                                                color: rgb(0,0,0) !important;
+                                                                line-height: 20px;">
+                                                                    <span>{{this.usuario.cargo}}</span>
+                                                                </p>
+                                                            </td>
+                                                            <td style="width:30px"><div style="width:30px"></div></td>
+                                                            <td style="height:auto!important;width: 1px !important;
+                                                            border-bottom: none !important;
+                                                            border-left: 1px solid rgb(3, 135, 54);"></td>
+                                                            <td style="width:30px"><div style="width:30px"></div></td>
+                                                            <td style="vertical-align: middle;">
+                                                                <table cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle!important;
+                                font-size: small !important;
+                                font-family: Arial, Helvetica, sans-serif!important;">
+                                                                    <tbody>
+                                                                         <tr style="height: 25px;"
+                                                                         [ngStyle]="{'display': this.usuario.telefone.length > 8 ? 'table-row' : 'none'}" id="phone">
+                                                                            <td style="width: 30px;
+                            vertical-align: middle;">
+                                                                                <table cellpadding="0" cellspacing="0">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="vertical-align:bottom">
+                                                                                                <span style="display: inline-block;
+                            width: 11px;">
+                                                                                                    <img
+                                                                                                    width="13"
+                                                                                                    style="color: #038736;
+                            width: 13px;
+                            display: block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/assets%2Fphone.png?alt=media&token=7a9cae02-cca0-4371-aeb1-f41eeecb0174&_gl=1*omot0j*_ga*MTE3OTM3MTk2Ni4xNjg0MTUyMTgw*_ga_CW55HF8NVT*MTY4NTcxMjE4My43LjEuMTY4NTcxMjE5MC4wLjAuMA.." alt="phone icon">
+                                                                                                </span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td style="padding:0px">
+                                                                                <a href="tel:{{this.usuario.telefone}}" id="phone" style="text-decoration: none;
+                            color: #0000ff;
+                            font-size: 12px;">
+                                                                                    <span style="text-decoration: none;
+                            color: #0000ff;
+                            font-size: 12px;">{{this.usuario.telefone}}</span>
+                                                                                </a>
+                                                                            </td>
+                                                                         </tr>
+                                                                         <tr style="height: 25px;
+                            display: table-row;" id="email">
+                                                                            <td style="width: 30px;
+                            vertical-align: middle;">
+                                                                                <table cellpadding="0" cellspacing="0">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="vertical-align:bottom">
+                                                                                                <span style="display: inline-block;
+                            width: 11px;">
+                                                                                                    <img
+                                                                                                    width="13"
+                                                                                                    style="color: #038736;
+                            width: 13px;
+                            display: block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/assets%2Femail.png?alt=media&token=7a9cae02-cca0-4371-aeb1-f41eeecb0174&_gl=1*omot0j*_ga*MTE3OTM3MTk2Ni4xNjg0MTUyMTgw*_ga_CW55HF8NVT*MTY4NTcxMjE4My43LjEuMTY4NTcxMjE5MC4wLjAuMA.." alt="email icon">
+                                                                                                </span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td style="padding:0px">
+                                                                                <a href="mailto:{{this.usuario.email}}:" id="phone" style="text-decoration: none;
+                            color: #0000ff;
+                            font-size: 12px;">
+                                                                                    <span style="text-decoration: none;
+                            color: #0000ff;
+                            font-size: 12px;">{{this.usuario.email}}</span>
+                                                                                </a>
+                                                                            </td>
+                                                                         </tr>
+                                                                         <tr style="height: 25px;
+                            display: table-row;" id="link">
+                                                                            <td style="width: 30px;
+                            vertical-align: middle;">
+                                                                                <table cellpadding="0" cellspacing="0">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="vertical-align:bottom">
+                                                                                                <span style="display: inline-block;
+                            width: 11px;">
+                                                                                                    <img
+                                                                                                    width="13" style="color: #038736;
+                            width: 13px;
+                            display: block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/assets%2Flink.png?alt=media&token=7a9cae02-cca0-4371-aeb1-f41eeecb0174&_gl=1*omot0j*_ga*MTE3OTM3MTk2Ni4xNjg0MTUyMTgw*_ga_CW55HF8NVT*MTY4NTcxMjE4My43LjEuMTY4NTcxMjE5MC4wLjAuMA.." alt="link icon">
+                                                                                                </span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td style="padding:0px">
+                                                                                <a href="www.tecverde.com.br" id="link" style="text-decoration: none;
+                            color: #0000ff;
+                            font-size: 12px;">
+                                                                                    <span style="text-decoration: none;
+                            color: #0000ff;
+                            font-size: 12px;">www.tecverde.com.br</span>
+                                                                                </a>
+                                                                            </td>
+                                                                         </tr>
+                                                                         <tr style="height: 25px;
+                            display: table-row;" id="pointer">
+                                                                            <td style="width: 30px;
+                            vertical-align: middle;">
+                                                                                <table cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle!important;
+                                font-size: small !important;
+                                font-family: Arial, Helvetica, sans-serif!important;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="vertical-align:bottom">
+                                                                                                <span style="display: inline-block;
+                            width: 11px;">
+                                                                                                    <img
+                                                                                                    width="13" style="color: #038736;
+                            width: 13px;
+                            display: block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/assets%2Fpointer.png?alt=media&token=7a9cae02-cca0-4371-aeb1-f41eeecb0174&_gl=1*omot0j*_ga*MTE3OTM3MTk2Ni4xNjg0MTUyMTgw*_ga_CW55HF8NVT*MTY4NTcxMjE4My43LjEuMTY4NTcxMjE5MC4wLjAuMA.." alt="pointer icon">
+                                                                                                </span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td style="padding:0px">
+                                                                                <a href="https://www.google.com/maps/place/R.+Pedro+de+Alc%C3%A2ntara+Meira,+1195+-+Fazenda+Velha,+Arauc%C3%A1ria+-+PR,+83704-530/data=!4m2!3m1!1s0x94dd0303683b0413:0xcd6ca652c1e77d6c?sa=X&ved=2ahUKEwjjq5ri1tb-AhURppUCHb6PADEQ8gF6BAgLEAI" id="pointer" style="text-decoration: none;
+                            color: #0000ff;
+                            font-size: 12px;">
+                                                                                    <span style="text-decoration: none;
+                            color: #0000ff;
+                            font-size: 12px;">R. Pedro de Alcântara Meira, 1195, Araucária,
+                                                                                        PR</span>
+                                                                                </a>
+                                                                            </td>
+                                                                         </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" style="width:100% ;vertical-align: -webkit-baseline-middle!important;
+                                font-size: small !important;
+                                font-family: Arial, Helvetica, sans-serif!important;">
+                                                    <tbody>
+                                                        <tr><td style="height:15px"></td></tr>
+                                                        <tr><td style="width:100% !important;
+                                                            border-left: none!important;
+                                                            border-bottom: 1px solid rgb(3, 135, 54);"></td></tr>
+                                                        <tr><td style="height:15px"></td></tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="vertical-align: top; text-align: right;">
+                                                <table cellpadding="0" cellspacing="0" style="
+                                                width: 100%;
+                                                vertical-align: -webkit-baseline-middle!important;
+                                font-size: small !important;
+                                font-family: Arial, Helvetica, sans-serif!important;">
+                                                    <tbody style="text-align:initial">
+                                                        <td style="vertical-align:top">
+                                                            <img width="150" style="width: 150px;
+                                                            max-width: 150px;
+                                                            display: inline-block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/email%2Farauco.png?alt=media&token=2a45bd38-4804-4949-956c-3a3bf4930c52" alt="">
+                                                        </td>
+                                                        <td style="text-align:right; vertical-align:top">
+                                                            <table cellpadding="0" cellspacing="0" style="display:inline-block; width:100%;vertical-align: -webkit-baseline-middle!important;
+                                font-size: small !important;
+                                font-family: Arial, Helvetica, sans-serif!important;">
+                                                                <tbody>
+                                                                    <tr style="text-align:right">
+                                                                        <td>
+                                                                            <a href="https://www.facebook.com/TecverdeEngenharia" style="color:#0000ff;
+                            text-decoration: none;
+                            display: inline-block;
+                            padding: 0px;">
+                                                                                <img
+                                                                                height="24" style="background-color: transparent;
+                            max-width: 135px;
+                            height: 24px;
+                            display: block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/email%2Ffacebook-icon?alt=media&token=b3c81a3d-9a11-4178-b3de-2b7d821a7f9a&_gl=1*jzkxvl*_ga*MTE3OTM3MTk2Ni4xNjg0MTUyMTgw*_ga_CW55HF8NVT*MTY4NTcxMjE4My43LjEuMTY4NTcxNDkxNS4wLjAuMA.." alt="facebook-icon">
+                                                                            </a>
+                                                                        </td>
+                                                                        <!-- <td><div style="width:5px"></div></td> -->
+                                                                        <td>
+                                                                            <a href="https://www.twitter.com/tecverdebrasil" style="color:#0000ff;
+                            text-decoration: none;
+                            display: inline-block;
+                            padding: 0px;">
+                                                                                <img
+                                                                                height="24" style="background-color: transparent;
+                            max-width: 135px;
+                            height: 24px;
+                            display: block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/email%2Ftwitter-icon?alt=media&token=b3c81a3d-9a11-4178-b3de-2b7d821a7f9a&_gl=1*jzkxvl*_ga*MTE3OTM3MTk2Ni4xNjg0MTUyMTgw*_ga_CW55HF8NVT*MTY4NTcxMjE4My43LjEuMTY4NTcxNDkxNS4wLjAuMA.." alt="twitter-icon">
+                                                                            </a>
+                                                                        </td>
+                                                                        <!-- <td><div style="width:5px"></div></td> -->
+                                                                        <td>
+                                                                            <a href="https://www.linkedin.com/company/tecverde-engenharia-ltda" style="color:#0000ff;
+                            text-decoration: none;
+                            display: inline-block;
+                            padding: 0px;">
+                                                                                <img
+                                                                                height="24" style="background-color: transparent;
+                            max-width: 135px;
+                            height: 24px;
+                            display: block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/email%2Flinkedin-icon?alt=media&token=b3c81a3d-9a11-4178-b3de-2b7d821a7f9a&_gl=1*jzkxvl*_ga*MTE3OTM3MTk2Ni4xNjg0MTUyMTgw*_ga_CW55HF8NVT*MTY4NTcxMjE4My43LjEuMTY4NTcxNDkxNS4wLjAuMA.." alt="linkedin-icon">
+                                                                            </a>
+                                                                        </td>
+                                                                        <!-- <td><div style="width:5px"></div></td> -->
+                                                                        <td>
+                                                                            <a href="https://www.instagram.com/tecverdeengenharia" style="color:#0000ff;
+                            text-decoration: none;
+                            display: inline-block;
+                            padding: 0px;">
+                                                                                <img
+                                                                                height="24" style="background-color: transparent;
+                            max-width: 135px;
+                            height: 24px;
+                            display: block;" src="https://firebasestorage.googleapis.com/v0/b/tecverde-glpi.appspot.com/o/email%2Finstagram-icon?alt=media&token=b3c81a3d-9a11-4178-b3de-2b7d821a7f9a&_gl=1*jzkxvl*_ga*MTE3OTM3MTk2Ni4xNjg0MTUyMTgw*_ga_CW55HF8NVT*MTY4NTcxMjE4My43LjEuMTY4NTcxNDkxNS4wLjAuMA.." alt="instagram-icon">
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height:30px"></td>
+                                        </tr>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </main>
+                        </div>
+                        <br>
+                        <div style="display:flex">
+                            <button mat-raised-button color="primary" style="background-color:mediumseagreen !important" (click)="show()">Esconder</button>
+                            <button mat-raised-button color="primary" style="background-color:mediumseagreen !important; margin-left: 5px!important;" (click)="generate()">Gerar</button>
+                        </div>
+                    </div>
+
+                </app-card>
+            </app-modal>
+        <!-- </app-card> -->
+    <!-- </div> -->
+    <div class="card-container">
 
         <div class="mail-container" 
         style="
 
         ">
         <div class="form-wrapper">
-            <div class="form-row">
-                <div class="form-col">                
-                    <ng-input class="teste" formFieldClass="form-field" icon="user" label="Nome" name="nome"></ng-input>
+            <div class="row">
+                <div class="col">
+                    <ng-input  formFieldClass="form-field" icon="user" label="Nome" name="nome" [(model)]="this.usuario.nome" ></ng-input>
                 </div>
-                <div class="form-col">
-                    <ng-input class="teste" formFieldClass="form-field" icon="user" label="E-mail" name="email"></ng-input>
+                <div class="col">
+                    <ng-input  formFieldClass="form-field" icon="user" label="Sobrenome" name="sobrenome" [(model)]="this.usuario.sobrenome"></ng-input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ng-input  formFieldClass="form-field" icon="user" label="Cargo" name="cargo" [(model)]="this.usuario.cargo"></ng-input>
+                </div>
+                <div class="col">
+                    <ng-input  formFieldClass="form-field" icon="user" label="Email" name="email" [(model)]="this.usuario.email"></ng-input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ng-input  formFieldClass="form-field" icon="user" label="Telefone" name="telefone" [(model)]="this.usuario.telefone"></ng-input>
+                </div>
+                <div class="col">
+                    <ng-input  formFieldClass="form-field" icon="user" label="Imagem" name="url_imagem" [(model)]="this.usuario.url_imagem"></ng-input>
                 </div>
             </div>
 
-            
 
-            
+            <div class="row">
+                <div class="col">
+                    <button mat-raised-button color="primary" style="background-color:mediumseagreen !important" (click)="show()">Visualizar</button>
+                    <button mat-raised-button color="primary" style="background-color:mediumseagreen !important; margin-left: 5px!important;">Gerar</button>
+                </div>
 
+
+            </div>
+
+<!--             
+            21300493
+
+            OAB00204998 -->
             <!-- <ng-input  formFieldClass="form-field" icon="user" label="Sobrenome" name="sobrenome"></ng-input>
             <ng-input  formFieldClass="form-field" icon="user" label="Sobrenome" name="sobrenome" ></ng-input>
             <ng-input  formFieldClass="form-field" icon="user" label="Sobrenome" name="sobrenome" ></ng-input>
