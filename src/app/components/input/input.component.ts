@@ -15,7 +15,7 @@ export class InputComponent{
   @Input() controlName:any
   @Input() form: any
   @Input() disable = false
-  @Input()
+  // @Input()
 
   @Output() modelChange = new EventEmitter<any>()
 
@@ -28,7 +28,7 @@ export class InputComponent{
   }
 
   emitChanges(){
-    console.log(this.model)
+    console.log(`ping`, this.model)
     this.modelChange.emit(this.model);
   }
 

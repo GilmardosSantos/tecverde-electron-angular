@@ -157,17 +157,11 @@ export class TermoComponent{
         let name_arr:String[] = `${res.firstname} ${res.realname}`.split(' ');
         let excel = <any>{}
         let filtered = name_arr.slice(0, name_arr.length - 1).join(' ')
-        console.log(filtered)
         for(let xlsx of this.enderecos){
-          console.log(xlsx)
           if(xlsx.NOME.toUpperCase().includes(filtered.toUpperCase())){
             excel = xlsx
-            // console.log(xlsx)
           }
         }
-        this.enderecos.find((item:any) =>{
-
-        })
         // const excel = this.enderecos.find((item:any) =>{
         //   for(let name of name_arr.filter(n => n.toLowerCase() != 'de')){
         //     console.log(name)
@@ -182,8 +176,6 @@ export class TermoComponent{
         //   i = 0 ;
         //   return null;
         // })
-        console.log('EXCEL Search:',name_arr)
-        console.log(excel)
         if(excel){
           this.toast.success(excel.NOME,excel.CPF)
           let cpf = String(excel.CPF).replace(/[^\w\s]/gi, '')
@@ -212,7 +204,6 @@ export class TermoComponent{
     if(this.editando_tabela.is){
       this.forms.item_tabela.produto = value;
       this.forms.usuario.tabela01[this.editando_tabela.index] = this.forms.item_tabela;
-
       this.searchGlpi(value)
       return
     }
